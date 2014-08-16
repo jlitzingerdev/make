@@ -1,0 +1,18 @@
+# 
+# Simple makefile skeleton for C apps
+#
+
+objs := main.o
+target := mytarget
+ld_libs :=
+
+$(target): $(objs)
+	$(LINK.c) -o $@ $^ $(ld_libs)
+
+
+main.o:
+
+.PHONY: clean
+
+clean:
+	-rm *.o *.a *.so $(target)
