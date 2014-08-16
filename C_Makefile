@@ -9,8 +9,9 @@ ld_libs :=
 $(target): $(objs)
 	$(LINK.c) -o $@ $^ $(ld_libs)
 
-
-main.o:
+%.o: %.c
+	@$(COMPILE.c) -o $@ $<	
+	@echo "CC $(<)"
 
 .PHONY: clean
 
