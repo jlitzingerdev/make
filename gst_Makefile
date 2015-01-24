@@ -1,0 +1,19 @@
+
+OBJS := 
+
+GST_INCS = $(shell pkg-config --cflags gstreamer-1.0)
+GST_LIBS = $(shell pkg-config --libs gstreamer-1.0)
+
+LD_LIBS = $(GST_LIBS)
+LDFLAGS += -L/usr/local/lib
+INCLUDES = $(GST_INCS)
+
+CFLAGS += -fno-omit-frame-pointer -g $(INCLUDES) -Wall -Werror -Wunreachable-code
+
+target: $(OBJS)
+	$(LINK.c) -o $@ $^ $(LD_LIBS)
+
+.PHONY: clean
+
+clean:
+	-rm *.o 
